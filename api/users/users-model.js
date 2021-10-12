@@ -18,6 +18,10 @@ function find() {
       }
     ]
    */
+  return db('users as u')
+    .leftJoin('roles as r', 'u.role_id', 'r.role_id')
+    .select('u.user_id', 'u.username', 'r.role_name')
+    .groupBy('user_id')
 }
 
 function findBy(filter) {
